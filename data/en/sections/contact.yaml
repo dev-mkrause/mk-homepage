@@ -2,6 +2,8 @@ section:
   name: Contact
   id: contact
   enable: true
+  text: "Schedule an appointment"
+  link: "https://calendly.com/krause-marvin/30min"
   weight: 2
   showOnNavbar: true
   template: sections/contact.html
