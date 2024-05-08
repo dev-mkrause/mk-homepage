@@ -1,6 +1,6 @@
-baseURL: https://hugo-toha.github.io
+baseURL: https://mkrause.org/
 
-languageCode: de-de
+languageCode: en-us
 title: "Marvin Krause"
 
 # Use Hugo modules to add theme
