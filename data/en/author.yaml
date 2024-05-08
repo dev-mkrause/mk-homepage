@@ -1,21 +1,19 @@
 # some information about you
-name: "John Doe"
-nickname: "John"
-# greeting message before your name. it will default to "Hi! I am" if not provided
-greeting: "Hi, I am"
-image: "images/author/john.png"
+name: "Marvin Krause"
+#nickname: "Marvin"
+greeting: "Programming and Data Services | "
+# image: "images/author/john.png"
 # give your some contact information. they will be used in the footer
 contactInfo:
-  email: "johndoe@example.com"
-  phone: "+0123456789"
-  github: johndoe
-  linkedin: johndoe
-  researchgate: john-doe
+#  email: "TODO"
+#  phone: "TODO"
+  github: dev-mkrause
+  linkedin: dev-mkrause
+#  researchgate: john-doe
 
 # some summary about what you do
 summary:
-  - I am a Developer
-  - I am a Devops
-  - I love servers
-  - I work on open-source projects
-  - I love to work with some fun projects
+  - Programming Is Not About Typing, It's About Thinking. - Rich Hickey
+  - Bad programmers worry about the code. Good programmers worry about data structures and their relationships. – Linus Torvalds
+  - In programming, the hard part isn’t solving problems but deciding what problems to solve. – Paul Graham
+  - If I had eight hours to chop down a tree, I'd spend six hours sharpening my axe. - Abraham Linkoln

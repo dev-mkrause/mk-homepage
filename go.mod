@@ -1,9 +1,7 @@
-module github.com/hugo-toha/hugo-toha.github.io
+module github.com/dev-mkrause/mk-homepage
 
 go 1.19
 
-require github.com/hugo-toha/toha/v4 v4.4.1-0.20240510202123-a959cb174de6 // indirect
+require github.com/dev-mkrause/mk-toha/v4
 
-// replace(
-//     github.com/hugo-toha/toha/v4 => ../toha
-// )
+// replace github.com/hugo-toha/toha/v4 => /home/mkrause/dev/mk-toha
