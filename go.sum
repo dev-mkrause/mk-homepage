@@ -1,3 +1,2 @@
-github.com/dev-mkrause/mk-toha/v4 v4.0.0-20240507110637-e3da3d413b1c/go.mod h1:p/K34lqlqmhzfPd4cx66od7sjlROBqhMxG30mJz+aKQ=
-github.com/hugo-toha/toha/v4 v4.4.0 h1:RdRpjfsPgE+VXb/m3Rl+1n86pVZTrplsDvtXYK3wNh0=
-github.com/hugo-toha/toha/v4 v4.4.0/go.mod h1:p/K34lqlqmhzfPd4cx66od7sjlROBqhMxG30mJz+aKQ=
+github.com/dev-mkrause/mk-toha/v4 v4.0.0-20240509100408-cb0a73f12534 h1:7DhOPy8/xvFSerpWNVx+ibxsMfXYuRxg3LbM0xZ71FQ=
+github.com/dev-mkrause/mk-toha/v4 v4.0.0-20240509100408-cb0a73f12534/go.mod h1:2b3g7xRMCNpr2Ubjyntav4LcFJPUXEJ6YhudMwBBjd4=
