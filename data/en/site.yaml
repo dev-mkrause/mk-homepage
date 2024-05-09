@@ -22,8 +22,8 @@ description: Big Data and functional programming services.
 
 # Specify OpenGraph Headers
 openGraph:
-  title: Marvins's Blog
+  title: Big Data, Consulting and Software Development
   type: website
   description: Big Data and functional programming services - Marvin Krause.
-  image: images/author/john.png
-  url: TODO
+  image: assets/images/site/main-logo.png
+  url: https://mkrause.org
