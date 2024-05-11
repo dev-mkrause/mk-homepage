@@ -17,7 +17,7 @@ degrees:
     name: ILS Hamburg
     logo: /images/sections/education/ils-logo.png
 
-- name: IBM Data Engineering der IBM auf Coursera
+- name: IBM Data Engineering by IBM on Coursera
   timeframe: 2022
   icon: fa-graduation-cap
   institution:
@@ -32,7 +32,7 @@ degrees:
       - name: Certificate
         content: "https://coursera.org/share/c2c414e94482e3cf769dbfc39c9bdb55"
 
-- name: People and Soft Skills for Professional and Personal Success der IBM auf Coursera
+- name: People and Soft Skills for Professional and Personal Success by IBM on Coursera
   timeframe: 2022
   icon: fa-graduation-cap
   institution:
