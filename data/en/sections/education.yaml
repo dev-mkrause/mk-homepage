@@ -23,7 +23,7 @@ degrees:
   institution:
     name: IBM / Coursera
     logo: /images/sections/education/ibm-logo.svg
-  custonSections:
+  customSections:
       - name: Course Content
         content: "- Master the most up-to-date practical skills and knowledge data engineers use in their daily roles \n
         - Learn to create, design, & manage relational databases & apply database administration (DBA) concepts to RDBMSs such as MySQL, PostgreSQL, & IBM Db2 \n
@@ -38,7 +38,7 @@ degrees:
   institution:
     name: IBM / Coursera
     logo: /images/sections/education/ibm-logo.svg
-  custonSections:
+  customSections:
     - name: Course Content
       content: "- Create and deliver presentations that will leave a lasting impact on your audience \n
       - Communicate with your peers in a way that builds your personal reputation and increases your eminence \n
@@ -53,7 +53,7 @@ degrees:
   institution:
     name: Intellipaat
     logo: /images/sections/education/intellipaat.jpg
-  custonSections:
+  customSections:
       - name: Course Content
         content: "- Course target was to gain proficiency in Big Data.\n
         - Work on real-world projects including tools such as Hadoop Development, Hadoop Administration,
