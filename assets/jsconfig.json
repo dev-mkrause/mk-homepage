@@ -3,7 +3,7 @@
   "baseUrl": ".",
   "paths": {
    "*": [
-    "../../../../../tmp/hugo_cache/modules/filecache/modules/pkg/mod/github.com/dev-mkrause/mk-toha/v4@v4.0.0-20240509100408-cb0a73f12534/assets/*"
+    "../../../.cache/hugo_cache/modules/filecache/modules/pkg/mod/github.com/dev-mkrause/mk-toha/v4@v4.0.0-20240511113623-19585cac2fea/assets/*"
    ]
   }
  }
