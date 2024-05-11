@@ -1,0 +1,10 @@
+section:
+  name: Kontakt
+  id: contact
+  enable: true
+  header: "Brauchen Sie Hilfe bei Ihrem IT-Problem? Melden Sie sich jetzt."
+  text: "Kostenloses Beratungsgespräch"
+  link: "https://calendly.com/krause-marvin/30min"
+  weight: 2
+  showOnNavbar: true
+  template: sections/contact.html

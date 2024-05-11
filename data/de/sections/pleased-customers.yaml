@@ -1,0 +1,8 @@
+section:
+  name: Pleased Customers
+  id: pleased-customers
+  enable: false
+  weight: 5
+  showOnNavbar: false
+  template: sections/pleased-customers.html
+

@@ -1,0 +1,40 @@
+# section information
+section:
+  name: Erfahrungen
+  id: experiences
+  enable: true
+  weight: 4
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true 
+
+# Your experiences
+experiences:
+- company:
+    name: Scienova GmbH
+    url: "https://www.scienova.com"
+    location: Jena, Deutschland
+    logo: /images/sections/experiences/logo-scienova.png
+    # company overview
+    overview: "Die scienova GmbH mit Sitz am Forschungs- und Innovationsstandort Jena, ist ein innovatives und international vernetztes Unternehmen.\n\n
+               Mit dem Fokus auf die Entwicklung und den Vertrieb von automatisierungsfähigen Dialysekartuschen,
+               die die Probendialyse für Forschungs- und Diagnostikprozesse im modernen Labor produktiver machen,
+               beschäftigt sich die scienova GmbH seit Ihrer Gründung."
+
+  positions:
+  - designation: Software Engineer
+    start: Oktober 2023
+    # don't provide end date if you are currently working there. It will be replaced by "Present"
+    # end: Dec 2020
+    responsibilities:
+    - Entwurf und Entwicklung eines Python-Skripts für den Raspberry Pi Mikrocontroller für Leitfähigkeitssensorik.
+    - Entwurf, Entwicklung und Verwaltung eines Clojure-Desktop-Programms zur Verwendung mit Mikrocontrollern,
+      um Sensoren zu kalibrieren, Messungen in Echtzeit vorzunehmen und diese in verschiedenen Formaten anzuzeigen und zu speichern.
+    - Entwurf und Vorschlag einer Cloud-Architektur für die Bereitstellung und Analyse von Zeitreihendaten mit AWS.
+
+  # - designation: Software Engineer
+  #   start: Oct 2023
+  #   responsibilities:
+  #   - Implement and test xyz feature for abc tool.
+  #   - Support client for abc tool.
+  #   - Learn k,d,w technology for xyz.

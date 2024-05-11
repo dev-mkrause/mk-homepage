@@ -1,0 +1,98 @@
+# section information
+section:
+  name: Info
+  id: about
+  enable: true
+  weight: 1
+  showOnNavbar: true
+  template: sections/about.html
+
+# a summary about you
+summary: "Daten zeigen, was ist, und ermöglichen es uns, Erkenntnisse zu gewinnen. Basierend auf diesen Erkenntnissen kann Automatisierung erfolgen,
+          um für die Menschen, die Gesellschaft und für Ihr Unternehmen die Zukunft effizienter zu gestalten. \n
+
+          Als Freelancer liegt mein Fokus darauf, Ihr Unternehmen bei der Beratung, Planung und Umsetzung von Automatisierungs- und Datenlösungen zu unterstützen.
+	  Meine Schwerpunkte sind funktionale Programmiersprachen und Architekturen. Das ermöglicht es, datenbasierte Lösungen besonders einfach parallel, skalierbar und effizient zu realisieren."
+
+# your social links
+# give as many as you want. use font-awesome for the icons.
+socialLinks:
+- name: Email
+  icon: "fas fa-envelope"
+  url: "contact@mkrause.org"
+
+- name: Github
+  icon: "fab fa-github"
+  url: "https://github.com/dev-mkrause/"
+
+# - name: Stackoverflow
+#   icon: "fab fa-stack-overflow"
+#   url: "#"
+
+- name: LinkedIn
+  icon: "fab fa-linkedin"
+  url: "https://www.linkedin.com/in/dev-mkrause/"
+
+# - name: Twitter
+#   icon: "fab fa-twitter"
+#   url: "#"
+
+# - name: Facebook
+#   icon: "fab fa-facebook"
+#   url: "#"
+
+# - name: Mastadon
+#   icon: "fab fa-mastodon"
+#   url: "#"
+#   rel: "me noopener"
+
+# - name: ResearchGate
+#   icon: "fab fa-researchgate"
+#   url: "https://www.researchgate.net/profile/john-doe"
+
+# You can put custom buttons to link your relevant resources.
+# For example, you can put link for your resume.
+# resourceLinks:
+# - title: "Mein Resume"
+#   url: "files/resume.pdf"
+
+# Show your badges
+# You can show your verifiable certificates from https://www.credly.com.
+# You can also show a circular bar indicating the level of expertise on a certain skill
+badges:
+- type: certification
+  name: IBM Data Engineering Professional Certificate
+  url: "https://www.credly.com/badges/ea1ce595-6763-4831-a76f-fc3e713ce277/public_url"
+  badge: "https://images.credly.com/images/6e740902-ae17-42c3-85c9-b4d017d8e21e/image.png"
+
+- type: certification
+  name: Databases and SQL for Data Science
+  url: "https://www.credly.com/badges/1043484f-21da-4a15-9bfd-6a3fb38170f9/public_url"
+  badge: "https://images.credly.com/size/340x340/images/594e0ab7-c864-4d9a-9987-3a903ec3f06a/Cognitive_Class_-_DB_and_SQL_for_Data_Sci.png"
+
+- type: certification
+  name: Data Warehousing and BI Analytics Essentials
+  url: "https://www.credly.com/badges/78da997c-4462-4594-9227-c933dc168630/public_url"
+  badge: "https://images.credly.com/size/340x340/images/779d8ac4-440d-4a92-8735-064960922f56/image.png"
+
+
+- type: soft-skill-indicator
+  name: Kommunikation
+  percentage: 100
+  color: blue
+
+- type: soft-skill-indicator
+  name: Flexibilität
+  percentage: 95
+  color: yellow
+
+- type: soft-skill-indicator
+  name: Teamwork
+  percentage: 90
+  color: orange
+
+# you can also provide color code instead of the color name
+# - type: soft-skill-indicator
+#   name: Example 1
+#   percentage: 75
+#   color: "#00adb5"

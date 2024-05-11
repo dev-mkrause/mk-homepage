@@ -1,0 +1,64 @@
+# section information
+section:
+  name: Bildung
+  id: education
+  template: sections/education.html # Use "sections/education-alt.html for alternate template.
+  enable: true
+  weight: 6
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true
+
+degrees:
+- name: Fernlehrgang in Java-Programmierung
+  icon: fa-graduation-cap
+  timeframe: 2018
+  institution:
+    name: ILS Hamburg
+    logo: /images/sections/education/ils-logo.png
+
+- name: IBM Data Engineering der IBM auf Coursera
+  timeframe: 2022
+  icon: fa-graduation-cap
+  institution:
+    name: IBM / Coursera
+    logo: /images/sections/education/ibm-logo.svg
+  customSections:
+      - name: Kursinhalt
+        content: "- Meistern der aktuellsten praktischen Fähigkeiten und Kenntnisse, die Data Engineers in ihrer täglichen Arbeit benötigen.\n
+                  - Relationale Datenbanken zu erstellen, zu entwerfen und zu verwalten und Konzepte der Datenbankverwaltung (DBA) auf RDBMS wie MySQL, PostgreSQL und IBM Db2 anzuwenden.\n
+                  - Entwicklung und Anwendung von praktischem Fachwissen über NoSQL und Big Data mit MongoDB, Cassandra, Cloudant, Hadoop, Apache Spark, Spark SQL, Spark ML und Spark Streaming\n
+                  - Implementierung von ETL und Datenpipelines mit Bash, Airflow und Kafka; Aufbau, Befüllung und Bereitstellung von Data Warehouses; Erstellung von BI-Berichten und interaktiven Dashboards"
+      - name: Zertifikat
+        content: "https://coursera.org/share/c2c414e94482e3cf769dbfc39c9bdb55"
+
+- name: People and Soft Skills for Professional and Personal Success der IBM auf Coursera
+  timeframe: 2022
+  icon: fa-graduation-cap
+  institution:
+    name: IBM / Coursera
+    logo: /images/sections/education/ibm-logo.svg
+  customSections:
+    - name: Kursinhalt
+      content: "- Erstellen und Halten von Präsentationen, die einen bleibenden Eindruck bei Ihrem Publikum hinterlassen\n
+                - Kommunizieren Sie mit Ihren Kollegen auf eine Art und Weise, die Ihr persönliches Ansehen steigert und Ihre Bekanntheit erhöht\n
+                - Aktives Zuhören und einen Fragestil demonstrieren, um Themen zu erkunden, das Verständnis zu verbessern und Probleme zu lösen\n
+                - Ihre Arbeit zügig und effizient erledigen, was zu Ihrer Zufriedenheit beiträgt und Ihre berufliche Entwicklung fördert."
+    - name: Zertifikat
+      content: "https://coursera.org/share/5159fec251643ff0fd1911e1c58416b8"
+
+- name: Big Data Architect Master's Course
+  timeframe: 2024
+  icon: fa-graduation-cap
+  institution:
+    name: Intellipaat
+    logo: /images/sections/education/intellipaat.jpg
+  customSections:
+      - name: Kursinhalt
+        content: "- Erlangen von Kompetenz im Bereich Big Data.\n
+                  - Arbeit an realen Projekten mit Tools wie Hadoop-Entwicklung, Hadoop-Administration, Hadoop-Analyse, Hadoop-Tests, Spark, Python,
+		    Splunk-Entwicklung und -Administration, Apache Storm, NoSQL-Datenbanken und mehr.\n
+                  - 13 Kurse und 33 industriebezogene Projekte.\n
+                  - In Kooperation mit IBM erstellte Kurse, nämlich Spark MLlib, and Python for Data Science"
+      - name: Zertifikat
+        image: "/images/sections/education/intellipaat-bda-certificate.jpg"
