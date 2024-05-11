@@ -7,17 +7,6 @@ section:
   showOnNavbar: true
   template: sections/about.html
 
-# your designation
-# designation: Software Engineer
-# your company information
-# company:
-#   name: Example Co.
-#   url: "https://www.example.com"
-
-# your resume. this file path should be relative to you "static" directory
-# Dreprecated. Use resourceLinks instead.
-# resume: "files/resume.pdf"
-
 # a summary about you
 summary: "Data shows us what is happening and enables us to gain insights. Based on these insights, automation can be implemented to make the future more efficient for people, society and your company.\n
 
