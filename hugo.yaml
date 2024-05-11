@@ -28,7 +28,8 @@ languages:
   de:
     languageName: German
     weight: 2
-
+# Needs to be set to default language for language selector
+DefaultContentLanguage: en
 
 # Allow raw html in markdown file
 markup:
