@@ -2,6 +2,7 @@ section:
   name: Contact
   id: contact
   enable: true
+  header: "Need a hand with your IT problem? Reach out now."
   text: "Schedule an appointment"
   link: "https://calendly.com/krause-marvin/30min"
   weight: 2
