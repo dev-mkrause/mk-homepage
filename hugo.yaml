@@ -23,7 +23,7 @@ languages:
   en:
     languageCode: en
     languageName: English
-    title: "John's Blog"
+    # title: "John's Blog"
     weight: 1
   de:
     languageName: German
