@@ -13,16 +13,16 @@ section:
 skills:
 - name: Wie können wir helfen?
   logo: /images/sections/skills/functional-programming.png
-  summary: "Ich spezialisiere mich auf (Big) Data Consulting mit besonderem fokus auf funktionale Architektur und Programmierung.\n
+  summary: "Wir sind auf (Big) Data Consulting mit besonderem Fokus auf funktionale Architektur und Programmierung spezialisiert.\n
   
-            Von strategischer Beratung über Implementierung bis hin zur Verbesserung der Infrastruktur stehe ich Ihnen zur Unterstützung Ihrer geschäftlichen Anforderungen zur Verfügung."
+            Von strategischer Beratung über Implementierung bis hin zur Verbesserung der Infrastruktur stehen wir Ihnen zur Unterstützung Ihrer geschäftlichen Anforderungen zur Verfügung."
   url: ""
 
 - name: Consulting
   logo: /images/sections/skills/big-data.png
-  summary: "Als engagierter Berater biete ich personalisierte Strategien, die auf Ihre individuellen Geschäftsziele abgestimmt sind.\n
+  summary: "Als engagierte Berater bieten wir personalisierte Strategien, die auf Ihre individuellen Geschäftsziele abgestimmt sind.\n
   
-            Ich helfe Ihnen dabei, (Big) Data und funktionale Programmierung zu nutzen, um Wachstum und Innovation in Ihrem Unternehmen und Ihren Projekten voranzutreiben."
+            Wir helfen Ihnen dabei, (Big) Data und funktionale Programmierung zu nutzen, um Wachstum und Innovation in Ihrem Unternehmen und Ihren Projekten voranzutreiben."
   url: ""
 
 - name: Implementierung
@@ -42,5 +42,5 @@ skills:
 - name: Optimierung
   logo: /images/sections/skills/batch-services.png
   summary: "Maximieren Sie die Leistung und Effizienz Ihrer aktuellen Infrastruktur.
-            Gemeinsam ermitteln wir Verbesserungspotenziale und implementieren gezielte Lösungen zur Verbesserung Ihrer Systeme und Arbeitsabläufe."
+            Gemeinsam ermitteln wir Optimierungspotential und implementieren gezielte Lösungen zur Verbesserung Ihrer Systeme und Arbeitsabläufe."
   url: ""
