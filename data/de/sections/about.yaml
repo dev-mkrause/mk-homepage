@@ -8,11 +8,11 @@ section:
   template: sections/about.html
 
 # a summary about you
-summary: "Daten zeigen, was ist, und ermöglichen es uns, Erkenntnisse zu gewinnen. Basierend auf diesen Erkenntnissen kann Automatisierung erfolgen,
-          um für die Menschen, die Gesellschaft und für Ihr Unternehmen die Zukunft effizienter zu gestalten. \n
+summary: "Daten bieten Einblicke in die Realität und ermöglichen es uns, Erkenntnisse zu gewinnen. Auf Grundlage dieser Erkenntnisse kann Automatisierung implementiert werden,
+          um die Zukunft für Menschen, Gesellschaft und Ihr Unternehmen effizienter zu gestalten.
 
-          Als Freelancer liegt mein Fokus darauf, Ihr Unternehmen bei der Beratung, Planung und Umsetzung von Automatisierungs- und Datenlösungen zu unterstützen.
-	  Meine Schwerpunkte sind funktionale Programmiersprachen und Architekturen. Das ermöglicht es, datenbasierte Lösungen besonders einfach parallel, skalierbar und effizient zu realisieren."
+          Als Freelancer liegt unser Fokus darauf, Ihr Unternehmen bei der Beratung, Planung und Umsetzung von Automatisierungs- und Datenlösungen zu unterstützen.
+	  Meine Schwerpunkte sind funktionale Programmiersprachen und Architekturen. Das ermöglicht es, datenbasierte Lösungen besonders einfach, parallel, skalierbar und effizient zu realisieren."
 
 # your social links
 # give as many as you want. use font-awesome for the icons.

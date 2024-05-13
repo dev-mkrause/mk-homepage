@@ -15,7 +15,7 @@ skills:
   logo: /images/sections/skills/functional-programming.png
   summary: "Wir sind auf (Big) Data Consulting mit besonderem Fokus auf funktionale Architektur und Programmierung spezialisiert.\n
   
-            Von strategischer Beratung über Implementierung bis hin zur Verbesserung der Infrastruktur stehen wir Ihnen zur Unterstützung Ihrer geschäftlichen Anforderungen zur Verfügung."
+            Von strategischer Beratung über Umsetzung bis hin zur Verbesserung der Infrastruktur stehen wir Ihnen zur Unterstützung Ihrer geschäftlichen Anforderungen zur Verfügung."
   url: ""
 
 - name: Consulting
@@ -42,5 +42,5 @@ skills:
 - name: Optimierung
   logo: /images/sections/skills/batch-services.png
   summary: "Maximieren Sie die Leistung und Effizienz Ihrer aktuellen Infrastruktur.
-            Gemeinsam ermitteln wir Optimierungspotential und implementieren gezielte Lösungen zur Verbesserung Ihrer Systeme und Arbeitsabläufe."
+            Gemeinsam ermitteln wir Optimierungspotential und setzen gezielte Lösungen zur Verbesserung Ihrer Systeme und Arbeitsabläufe um."
   url: ""
