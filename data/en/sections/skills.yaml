@@ -11,21 +11,21 @@ section:
 # Your Skills.
 # Give a summary of you each skill in the summary section.
 skills:
-- name: How can I help?
+- name: How can we help?
   logo: /images/sections/skills/functional-programming.png
-  summary: "I specialize in providing (Big) Data Consulting and expertise in functional programming. From strategic consulting to implementation and infrastructure improvement, I'm here to support your business needs."
+  summary: "We specialize in providing (Big) Data Consulting and expertise in functional programming. From strategic consulting to implementation and infrastructure improvement, We're here to support your business needs."
   url: ""
 
 - name: Consulting
   logo: /images/sections/skills/big-data.png
-  summary: "As a dedicated consultant, I offer personalized strategies to align with your unique business objectives.
-            Let me help you how to leverage (Big) Data and functional programming to drive growth and innovation in your company and projects."
+  summary: "For dedicated consulting, we offer personalized strategies to align with your unique business objectives.
+            Let us help you how to leverage (Big) Data and functional programming to drive growth and innovation in your company and projects."
   url: ""
 
 - name: Implementation
   logo: /images/sections/skills/streaming-data.png
   summary: "Turn your plans into reality. Whether you need help deploying a new data platform, ingesting data or integrating advanced analytics solutions,
-            I have the skills and expertise to bring your projects to life."
+            We have the skills and expertise to bring your projects to life."
   url: ""
 
 - name: Custom Software
