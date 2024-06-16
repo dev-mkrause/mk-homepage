@@ -104,7 +104,7 @@ Alle anderen externen Zugriffe auf den Bucket sind dann blockiert.
 
 ** Amplify
 Amplify ist ein verwalteter Service von AWS der diese ganzen Einzelkomponenten als fertiges Paket verpackt.
-Mehr dazu lässt sich auf der Seite von Amplify nachlesen: https://aws.amazon.com/de/amplify/
+Mehr dazu lässt sich auf der Seite von [[https://aws.amazon.com/de/amplify/][Amplify]] nachlesen.
 Derzeit hat Amplify nur eine Alpha Library mit vorgefertigten Constructs im CDK und verwendet unter anderem auch den oben genannten OAUTH Token, um auf GitHub zuzugreifen.
 Das würde vermutlich wieder SecretManager notwendig machen.
 
@@ -132,8 +132,8 @@ Meine Umsetzung mit CDK, S3, Route53, Cloudfront und Codepipeline sieht jetzt im
 #+END_SRC
 
 ** TLS Zertifikat
-Für das Zertifikat verwende ich eine Library, die es einfacher macht, im gleichen Stack ein Zertifikat in einer anderen Region zu erstellen.
-https://constructs.dev/packages/@trautonen/cdk-dns-validated-certificate/v/0.1.3?lang=typescript
+Für das Zertifikat verwende ich eine [[https://constructs.dev/packages/@trautonen/cdk-dns-validated-certificate/v/0.1.3?lang=typescript][Library]], die es einfacher macht, im gleichen Stack ein Zertifikat in einer anderen Region zu erstellen.
+
 
 #+BEGIN_SRC typescript
     // Cross Region Certificate is required because CloudFront needs tls certificate to be in us-east-1.
