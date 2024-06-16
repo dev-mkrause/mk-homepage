@@ -1,0 +1,338 @@
+#+TITLE: Static Website on AWS using CDK
+#+AUTHOR: Marvin Krause
+#+EMAIL: contact@mkrause.org
+#+DATE: <2024-06-07 Fr 11:13>
+#+LANGUAGE: en
+
+Who hasn't experienced the frustration of a user interface suddenly changing without warning, making it impossible to find anything?
+This can lead to paying for unused services that are hidden behind countless buttons.
+
+I want to manage my infrastructure effortlessly, with minimal uncertainties, and have version control built-in.
+
+That's where Infrastructure as Code (IaC) comes in, specifically with AWS (Amazon Web Services) and their Cloud Development Kit (CDK).
+Using CDK not only saves time and money but also eases the stress of managing cloud resources.
+
+In this post, I'll discuss the additional benefits of CDK, share my personal experiences,
+and walk through my production code for the website you’re currently using, including CloudFront and CodePipeline.
+
+I'll also show you a way to save 50 cents per month in the CI pipeline.
+
+* Benefits of CDK
+
+- *Single Source of Truth:* The main advantage of CDK is the ability to define your entire infrastructure as code, creating a single source of truth.
+
+- *Automated Pipelines:* With these definitions, you can create pipelines that automatically deploy the updated CDK templates.
+  This can include staging areas, sending confirmation requests before modifying critical infrastructure, implementing tests, and more.
+
+- *Quick Overview and Easy Changes:* You can quickly look at your file to see the defined infrastructure and make immediate changes without navigating through the AWS web interface.
+
+- *Effortless Cleanup:* It’s reassuring to know that the infrastructure created with `cdk deploy` can be just as quickly and completely removed with `cdk destroy`.
+  This ensures no forgotten components are left behind, and your account isn’t cluttered with unnecessary IAM roles.
+
+- *Consolidated Resources:* In AWS CloudFormation, the service that CDK is built upon,
+  all resources can be viewed within their respective stacks. This is much more convenient than searching for scattered services in the AWS interface.
+
+* Personal Experiences Using CDK
+
+Getting up to speed with CDK can be challenging at times, as the documentation isn't always completely clear.
+Additionally, some services, like Amplify, are either not covered at all or only have libraries in an alpha stage and may not have pre-built constructs in CDK.
+
+While the CDK documentation includes many code examples, the AWS documentation for the underlying services often targets the user interface.
+This means you frequently need to read both sets of documentation and do a bit of translation between them.
+
+Sometimes, the code examples provided in the documentation aren't the best fit for every use case, and one may need to find better alternatives.
+For instance, finding the best way to incorporate the website's source code into the pipeline can require some additional research and adjustment.
+
+* The Best Way to Access the Source
+
+One such example provided in the documentation for GitHub is the `GitHubSourceAction`.
+
+#+BEGIN_SRC typescript
+// Read the secret from Secrets Manager
+const pipeline = new codepipeline.Pipeline(this, 'MyPipeline');
+const sourceOutput = new codepipeline.Artifact();
+const sourceAction = new codepipeline_actions.GitHubSourceAction({
+  actionName: 'GitHub_Source',
+  owner: 'awslabs',
+  repo: 'aws-cdk',
+  oauthToken: SecretValue.secretsManager('my-github-token'),
+  output: sourceOutput,
+  branch: 'develop', // default: 'master'
+});
+pipeline.addStage({
+  stageName: 'Source',
+  actions: [sourceAction],
+});
+#+END_SRC
+
+This approach uses Secrets Manager to store the GitHub token, allowing the pipeline to access the repository. However, storing this token in Secrets Manager additionally incurs costs  of 50 cents per month.
+
+An alternative that incurs no cost is to set up a CodeStar connection with GitHub in CodePipeline and use 'CodeStarConnectionsSourceAction' to link the GitHub repository with the pipeline.
+Here’s how you can do it:
+
+#+BEGIN_SRC typescript
+const pipeline = new codepipeline.Pipeline(this, 'MyPipeline');
+const sourceOutput = new codepipeline.Artifact();
+const sourceAction = new codepipeline_actions.CodeStarConnectionsSourceAction({
+  actionName: 'GitHub_Source',
+  owner: 'awslabs',
+  repo: 'aws-cdk',
+  connectionArn: 'arn:aws:codestar-connections:region:account-id:connection/connection-id',
+  output: sourceOutput,
+  branch: 'develop', // default: 'master'
+});
+pipeline.addStage({
+  stageName: 'Source',
+  actions: [sourceAction],
+});
+#+END_SRC
+
+Using CodeStar connections provides a secure and cost-effective way to integrate GitHub with CodePipeline, eliminating the monthly cost associated with storing tokens in Secrets Manager.
+
+* Possible Methods to Host a Static Website
+
+** S3 with Static Hosting Option Enabled without CloudFront
+This is likely the simplest solution. Here, the static website is uploaded to an S3 bucket.
+The bucket's static website hosting option is then enabled, and a DNS entry from the domain is configured to point to the bucket endpoint.
+
+This setup requires the S3 bucket to be publicly accessible.
+The downside of this method is that users who are far from the AWS region where the bucket is located may experience high latency.
+
+** S3 with Static Hosting Option Enabled and CloudFront
+
+In this approach, CloudFront is added in front of the S3 bucket. This distributes the website files across CloudFront's edge locations, significantly reducing latency for users worldwide. 
+However, the S3 bucket must still be publicly accessible, which leaves it open to direct access.
+
+** S3 Bucket Set to Private with OAI for CloudFront
+
+To keep the S3 bucket private, you can configure an Origin Access Identity (OAI) for CloudFront.
+This grants CloudFront the privilege to fetch and distribute files from the bucket, while blocking all other external access.
+
+This ensures that only CloudFront can access the bucket contents, providing an added layer of security.
+
+** Amplify
+
+Amplify is a managed AWS service that bundles all these components into a ready-to-use package.
+More details can be found on the official [[https://aws.amazon.com/de/amplify/][AWS Amplify]] homepage.
+Currently, Amplify has only an alpha state library of pre-built constructs in CDK and uses OAuth tokens to access GitHub, which would likely require using Secrets Manager again.
+
+* Final Implementation
+
+In my case, I've chosen to use a private S3 bucket with CloudFront for hosting. Here’s how I've implemented it using CDK, S3, Route53, CloudFront, and CodePipeline:
+
+** S3 Bucket for the Website
+
+#+BEGIN_SRC typescript
+const homepageBucket = new s3.Bucket(this, 'bucket-static-homepage', {
+  bucketName: DomainName,
+  versioned: false,
+  publicReadAccess: false,
+  blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
+  removalPolicy: cdk.RemovalPolicy.RETAIN,
+});
+#+END_SRC 
+
+** OAI for CloudFront
+
+#+BEGIN_SRC typescript
+const zone = route53.HostedZone.fromLookup(this, 'Zone', { domainName: DomainName });
+const cloudfrontOAI = new cloudfront.OriginAccessIdentity(this, 'cloudfront-OAI', {
+  comment: `OAI for ${DomainName}.`,
+});
+#+END_SRC 
+
+** TLS Certificate
+
+For the TLS certificate, I use a [[https://constructs.dev/packages/@trautonen/cdk-dns-validated-certificate/v/0.1.3?lang=typescript][library]] that simplifies creating a certificate in a different region within the same stack.
+
+#+BEGIN_SRC typescript
+const certificate = new cross_region_certificate.DnsValidatedCertificate(this, 'CrossRegionCertificate', {
+  domainName: DomainName,
+  alternativeDomainNames: [WWWSubdomain],
+  validationHostedZones: [{
+    hostedZone: zone
+  }],
+  certificateRegion: 'us-east-1'
+});
+#+END_SRC 
+
+** CloudFront
+
+Here, I use a CloudFront function (no Lambda@Edge) to handle URL rewrite issues typically encountered with static websites using S3 and CloudFront.
+
+#+BEGIN_SRC typescript
+const cfRedirectFunction = new cloudfront.Function(this, 'cfRedirectFunction', {
+  functionName: 'HomepageStaticSiteRedirect',
+  code: cloudfront.FunctionCode.fromInline(`
+    function handler(event) {
+      var request = event.request;
+      var uri = request.uri;
+
+      if (uri.endsWith('/')) {
+        request.uri += 'index.html';
+      } else if (!uri.includes('.')) {
+        request.uri += '/index.html';
+      }
+
+      return request;
+    }
+  `),
+  runtime: cloudfront.FunctionRuntime.JS_2_0,
+});
+
+const distribution = new cloudfront.Distribution(this, 'SiteDistribution', {
+  certificate: certificate,
+  defaultRootObject: "index.html",
+  domainNames: [WWWSubdomain, DomainName],
+  minimumProtocolVersion: cloudfront.SecurityPolicyProtocol.TLS_V1_2_2021,
+  errorResponses: [{
+    httpStatus: 403,
+    responseHttpStatus: 403,
+    responsePagePath: '/404.html',
+    ttl: cdk.Duration.minutes(30),
+  }],
+  defaultBehavior: {
+    origin: new cloudfront_origins.S3Origin(homepageBucket, { originAccessIdentity: cloudfrontOAI }),
+    compress: true,
+    functionAssociations: [{
+      function: cfRedirectFunction,
+      eventType: cloudfront.FunctionEventType.VIEWER_REQUEST,
+    }],
+    allowedMethods: cloudfront.AllowedMethods.ALLOW_GET_HEAD_OPTIONS,
+    viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+  },
+});
+#+END_SRC 
+
+** DNS Records in Route53 with CNAME Redirect from www Subdomain to the Main Domain
+
+#+BEGIN_SRC typescript
+new route53.ARecord(this, 'SiteAliasRecord', {
+  recordName: DomainName,
+  target: route53.RecordTarget.fromAlias(new targets.CloudFrontTarget(distribution)),
+  zone
+});
+
+new route53.CnameRecord(this, 'SiteCnameRecord', {
+  recordName: 'www',
+  domainName: DomainName,
+  zone: zone
+});
+#+END_SRC 
+
+** CodePipeline
+
+CodePipeline generates artifacts stored in a bucket. Since I don't want to retain artifacts, I've created a dedicated bucket that automatically deletes artifacts after 2 days.
+
+#+BEGIN_SRC typescript
+const artifactBucket = new s3.Bucket(this, 'PipelineArtifactsBucket', {
+  bucketName: 'homepage-pipeline-artifacts',
+  lifecycleRules: [{
+    expiration: cdk.Duration.days(2), // Expire objects after 2 days
+  }],
+  versioned: false,
+  removalPolicy: cdk.RemovalPolicy.DESTROY,
+  autoDeleteObjects: true
+});
+#+END_SRC 
+
+** Pipeline Definition
+
+Here, I disable KMS key creation as it’s unnecessary for my use case and incurs additional costs.
+
+#+BEGIN_SRC typescript
+const pipeline = new codepipeline.Pipeline(this, 'HomepagePipeline', {
+  pipelineName: 'HomepagePipeline',
+  crossAccountKeys: false, // Avoid creating KMS keys
+  artifactBucket: artifactBucket,
+});
+#+END_SRC 
+
+** Remaining Pipeline Definition with Stages and BuildSpec for Building the Static Website
+
+This includes uploading to S3 and invalidating the CloudFront cache to ensure it serves the latest files.
+
+#+BEGIN_SRC typescript
+// Source stage
+const sourceAction = new codepipeline_actions.CodeStarConnectionsSourceAction({
+  actionName: 'FetchSource',
+  owner: 'dev-mkrause',
+  repo: 'mk-homepage',
+  branch: 'main',
+  connectionArn: 'arn:aws:codestar-connections:eu-west-1:806167193702:connection/6246071e-ca63-44fc-8273-f71791dc0428',
+  output: sourceArtifact
+});
+
+// Build stage
+const buildProject = new codebuild.PipelineProject(this, 'BuildProject', {
+  buildSpec: codebuild.BuildSpec.fromObject({
+    version: '0.2',
+    phases: {
+      install: {
+        commands: [
+          'npm ci'
+        ],
+      },
+      build: {
+        commands: ['npx hugo --minify'],
+      },
+      post_build: {
+        commands: [
+          'echo "Uploading to S3."',
+          'cd public',
+          'aws s3 sync --delete . s3://${DOMAIN_NAME}/',
+          'echo "Upload Finished."',
+          'echo "Invalidating Cloudfront Cache."',
+          'aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_ID} --paths "/*"',
+          'echo "Invalidation finished."',
+        ]
+      },
+    },
+  }),
+  environment: {
+    buildImage: codebuild.LinuxBuildImage.STANDARD_5_0
+  },
+  environmentVariables: {
+    CLOUDFRONT_ID: { value: distribution.distributionId },
+    DOMAIN_NAME: { value: DomainName },
+  },
+});
+
+const distributionArn = `arn:aws:cloudfront::${this.account}:distribution/${distribution.distributionId}`;
+buildProject.addToRolePolicy(new iam.PolicyStatement({
+  resources: [distributionArn],
+  actions: [
+    'cloudfront:CreateInvalidation',
+  ],
+}));
+
+buildProject.addToRolePolicy(new iam.PolicyStatement({
+  actions: [
+    's3:ListBucket',
+    's3:GetObject',
+    's3:PutObject',
+    's3:DeleteObject'
+  ],
+  resources: [
+    homepageBucket.bucketArn,
+    `${homepageBucket.bucketArn}/*`
+  ]
+}));
+
+pipeline.addStage({
+  stageName: 'Source',
+  actions: [sourceAction],
+});
+
+const buildAction = new codepipeline_actions.CodeBuildAction({
+  actionName: 'Build',
+  project: buildProject,
+  input: sourceArtifact,
+  outputs: [buildArtifact],
+});
+
+pipeline.addStage({
+  stageName: 'Build',
+  actions: [buildAction],
+});
+#+END_SRC 
